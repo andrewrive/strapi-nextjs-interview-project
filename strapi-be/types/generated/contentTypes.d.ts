@@ -788,6 +788,68 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiBlogBlog extends Schema.CollectionType {
+  collectionName: 'blogs';
+  info: {
+    singularName: 'blog';
+    pluralName: 'blogs';
+    displayName: 'Blogs';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    slug: Attribute.UID<'api::blog.blog', 'title'> & Attribute.Required;
+    publish_date: Attribute.DateTime & Attribute.Required;
+    body: Attribute.Text & Attribute.Required;
+    image: Attribute.Media<'images'> & Attribute.Required;
+    read_time: Attribute.Float & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiVideoVideo extends Schema.CollectionType {
+  collectionName: 'videos';
+  info: {
+    singularName: 'video';
+    pluralName: 'videos';
+    displayName: 'Videos';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    slug: Attribute.UID<'api::video.video', 'title'> & Attribute.Required;
+    publish_date: Attribute.DateTime & Attribute.Required;
+    video: Attribute.Media<'videos'> & Attribute.Required;
+    video_description: Attribute.Text & Attribute.Required;
+    duration: Attribute.Float & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::video.video',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::video.video',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -806,6 +868,8 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::blog.blog': ApiBlogBlog;
+      'api::video.video': ApiVideoVideo;
     }
   }
 }
