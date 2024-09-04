@@ -18,8 +18,7 @@ export interface IStrapiBlog {
     title: string;
     slug: string;
     publish_date: Date;
-    video: any; // TODO;
-    video_description: string;
+    body: string;
     read_time: number;
     image: {
       data: IStrapiImage;
