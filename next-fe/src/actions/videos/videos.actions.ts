@@ -7,13 +7,18 @@ import { formatStrapiVideo } from "./videos.formatters";
 
 export async function fetchVideos({
   page,
+  search,
 }: {
   page: number;
+  search?: string;
 }): Promise<IPaginatedResponse<IVideo[]>> {
   const params = new URLSearchParams();
   params.set("sort[0]", "publish_date:desc");
   params.set("populate[0]", "video");
   params.set("pagination[page]", page.toString());
+  if (search) {
+    params.set(`filters[title][$contains]`, search);
+  }
   // fields
   ["id", "title", "publish_date", "slug", "duration"].forEach(
     (field, index) => {

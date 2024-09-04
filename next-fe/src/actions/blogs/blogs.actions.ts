@@ -7,13 +7,18 @@ import { formatStrapiBlog } from "./blog.formatters";
 
 export async function fetchBlogs({
   page,
+  search,
 }: {
   page: number;
+  search?: string;
 }): Promise<IPaginatedResponse<IBlog[]>> {
   const params = new URLSearchParams();
   params.set("sort[0]", "publish_date:desc");
   params.set("populate[0]", "image");
   params.set("pagination[page]", page.toString());
+  if (search) {
+    params.set(`filters[title][$contains]`, search);
+  }
   // fields
   ["id", "title", "publish_date", "slug", "read_time"].forEach(
     (field, index) => {
