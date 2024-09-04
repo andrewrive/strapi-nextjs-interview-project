@@ -6,6 +6,6 @@ export const ROUTES = {
   },
   videos: {
     index: "/videos",
-    byId: (id: string) => `${ROUTES.videos.index}/${id}`,
+    bySlug: (slug: string) => `${ROUTES.videos.index}/${slug}`,
   },
 };
