@@ -2,7 +2,7 @@ export const ROUTES = {
   home: "/",
   blogs: {
     index: "/blogs",
-    byId: (id: string | number) => `${ROUTES.blogs.index}/${id}`,
+    bySlug: (slug: string) => `${ROUTES.blogs.index}/${slug}`,
   },
   videos: {
     index: "/videos",

@@ -26,7 +26,7 @@ export default async function BlogsPage({
       <Grid2 container spacing={2}>
         {blogs.data.map((blog) => (
           <Grid2 size={{ xs: 3, md: 6 }} key={blog.id}>
-            <Link href={ROUTES.blogs.byId(blog.id)}>
+            <Link href={ROUTES.blogs.bySlug(blog.slug)}>
               <Card>
                 <CardMedia
                   component="img"

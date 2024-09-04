@@ -2,9 +2,8 @@ export interface IBlog {
   id: number;
   title: string;
   slug: string;
+  body: string;
   publish_date: Date;
-  video: any; // TODO;
-  video_description: string;
   read_time: number;
   image: {
     id: number;
