@@ -25,7 +25,7 @@ export default async function BlogsPage({
       <Typography variant="h1">Blog</Typography>
       <Grid2 container spacing={2}>
         {blogs.data.map((blog) => (
-          <Grid2 size={{ xs: 3, md: 6 }} key={blog.id}>
+          <Grid2 size={{ xs: 12, md: 4 }} key={blog.id}>
             <Link href={ROUTES.blogs.bySlug(blog.slug)}>
               <Card>
                 <CardMedia
@@ -36,7 +36,7 @@ export default async function BlogsPage({
                 <CardContent>
                   <Typography variant="h4">{blog.title}</Typography>
                 </CardContent>
-                <CardActions>Read Time: {blog.read_time} minutes</CardActions>
+                <CardActions>{blog.read_time} minutes read</CardActions>
               </Card>
             </Link>
           </Grid2>

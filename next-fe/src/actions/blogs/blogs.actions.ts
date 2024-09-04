@@ -15,9 +15,11 @@ export async function fetchBlogs({
   params.set("populate[0]", "image");
   params.set("pagination[page]", page.toString());
   // fields
-  ["id", "title", "publish_date", "slug"].forEach((field, index) => {
-    params.set(`fields[${index}]`, field);
-  });
+  ["id", "title", "publish_date", "slug", "read_time"].forEach(
+    (field, index) => {
+      params.set(`fields[${index}]`, field);
+    }
+  );
 
   const data = await request<IPaginatedResponse<IStrapiBlog[]>>(
     `/api/blogs?${params.toString()}`
